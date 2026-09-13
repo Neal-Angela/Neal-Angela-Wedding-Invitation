@@ -138,6 +138,17 @@
   }
 .site{
   display:none;
+  position:relative;
+  min-height:100vh;
+  isolation:isolate;
+}
+
+.site::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+
   background-image:
     linear-gradient(
       rgba(255,250,241,0.78),
@@ -145,10 +156,9 @@
     ),
     url("background invitation 1.jpeg");
 
-  background-size:100% auto;
+  background-size:cover;
   background-position:center;
-  background-repeat:repeat-y;
-  background-attachment:fixed;
+  background-repeat:no-repeat;
 }
   .site.show{display:block;animation:fade .9s ease}
   @keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
