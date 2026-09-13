@@ -233,7 +233,32 @@
 }
   .btn.alt{background:transparent;color:#70533c;border:1px solid #b99a74}
   footer{padding:45px 25px 70px;text-align:center;background:#efe0c8}
-  .tiny{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .tiny{
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+/* Beating heart */
+.heart{
+  display:inline-block;
+  animation:heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat{
+  0%, 100%{
+    transform:scale(1);
+  }
+  25%{
+    transform:scale(1.18);
+  }
+  40%{
+    transform:scale(1);
+  }
+  60%{
+    transform:scale(1.18);
+  }
+}
   @media(max-width:600px){
     .invite-card{min-height:100svh;border-radius:0}
     .names{font-size:50px}.details{grid-template-columns:1fr}
@@ -333,7 +358,9 @@ Due to our limited venue capacity, we kindly ask that you attend as the named gu
   </section>
 
   <footer>
-    <div class="tiny">With love, Neal & Angela 🤎</div>
+    <div class="tiny">
+  With love, Neal & Angela <span class="heart">🤎</span>
+</div>
   </footer>
 </main>
 
