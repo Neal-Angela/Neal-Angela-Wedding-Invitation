@@ -329,6 +329,204 @@
   font-size: 30px;
   cursor: pointer;
 }
+  /* ===== GIFT PREFERENCE OVERLAY ===== */
+
+.gift-overlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  overflow-y:auto;
+
+  background:
+    linear-gradient(
+      rgba(255,250,241,0.78),
+      rgba(255,250,241,0.78)
+    ),
+    url("background invitation 1.jpeg");
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+}
+
+.gift-overlay.show {
+  display:block;
+}
+
+.gift-overlay-page {
+  position:relative;
+  width:100%;
+  max-width:850px;
+  min-height:100vh;
+  margin:0 auto;
+  padding:55px 30px 60px;
+  color:#49382d;
+  text-align:center;
+  font-family:Georgia, "Times New Roman", serif;
+}
+
+.gift-close {
+  position:fixed;
+  top:18px;
+  right:22px;
+  z-index:10001;
+
+  border:none;
+  background:#70533c;
+  color:white;
+
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+  font-size:28px;
+  line-height:40px;
+
+  cursor:pointer;
+
+  box-shadow:0 5px 12px rgba(0,0,0,.25);
+}
+
+.gift-top-decoration {
+  color:#a7793b;
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.gift-title {
+  margin:15px 0 45px;
+
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:72px;
+  line-height:1;
+
+  font-weight:normal;
+
+  color:#5b4638;
+}
+
+.gift-section {
+  margin-bottom:42px;
+}
+
+.gift-section h2 {
+  margin:0 0 18px;
+
+  font-family:Georgia, "Times New Roman", serif;
+  font-size:26px;
+  font-weight:bold;
+
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.gift-divider {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+
+  color:#a7793b;
+
+  margin-bottom:22px;
+}
+
+.gift-divider span {
+  width:120px;
+  height:1px;
+  background:#a7793b;
+}
+
+.gift-section ul {
+  max-width:680px;
+  margin:0 auto;
+  padding-left:25px;
+
+  text-align:left;
+
+  font-size:20px;
+  line-height:1.55;
+}
+
+.gift-note {
+  max-width:720px;
+
+  margin:50px auto 35px;
+  padding:25px 30px;
+
+  border:1px solid #a7793b;
+  border-radius:22px;
+
+  background:rgba(255,250,241,.65);
+
+  font-size:18px;
+  line-height:1.65;
+  font-style:italic;
+}
+
+.gift-note strong {
+  font-style:normal;
+  font-size:20px;
+}
+
+.gift-back-btn {
+  border:none;
+
+  padding:12px 24px;
+
+  color:white;
+  background:#70533c;
+
+  border-radius:999px;
+
+  font-family:Georgia, "Times New Roman", serif;
+
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 7px 12px rgba(60,35,20,.30),
+    inset 0 2px 2px rgba(255,255,255,.25);
+}
+
+@media (max-width:600px) {
+
+  .gift-overlay-page {
+    padding:45px 20px 45px;
+  }
+
+  .gift-title {
+    font-size:52px;
+    margin-bottom:35px;
+  }
+
+  .gift-section h2 {
+    font-size:21px;
+  }
+
+  .gift-section ul {
+    font-size:17px;
+    line-height:1.55;
+  }
+
+  .gift-divider span {
+    width:65px;
+  }
+
+  .gift-note {
+    padding:22px 18px;
+    font-size:16px;
+  }
+
+  .gift-close {
+    top:12px;
+    right:12px;
+  }
+}
 </style>
 </head>
 <body>
@@ -421,7 +619,7 @@
 </div>
        <div class="buttons" style="transform:translateX(2.5px);">
   <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://www.google.com/maps/dir//GF,+J6JG%2BMF+New+Antipolo+City+Hall+of+Justice,+Hall+of+Justitice,+Sitio+Cabading,+Inarawan,+Antipolo,+1870+Rizal/@14.6316675,121.2236022,17z/data=!4m17!1m7!3m6!1s0x3397bf0061c0bd21:0xbc6179c989ed7e20!2sNew+Antipolo+City+Hall+of+Justice!8m2!3d14.6316623!4d121.2261771!16s%2Fg%2F11ld38hl41!4m8!1m0!1m5!1m1!1s0x3397bf0061c0bd21:0xbc6179c989ed7e20!2m2!1d121.2263765!2d14.631465!3e9?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D"target="_blank" rel="noopener noreferrer">Ceremony Direction</a>
-  <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="gift.html"> Gift Preference </a>
+  <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="#"  onclick="openGiftPreference(); return false;">Gift Preference</a>
   <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://www.google.com/maps/dir//Tobi's+Escape,+Ponderosa+Heights+Subdivision,+Lot+1+Block+5,+Bonanza+Bend,+cor+Curve+St,+Antipolo,+1870+Rizal/@14.6316675,121.2236022,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c7fcdf8e9865:0xd202a265c468d3b4!2m2!1d121.1642773!2d14.5746317!3e0?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Reception Direction</a>
 
 </div>
@@ -541,7 +739,123 @@ function closeBrowserNotice() {
 if (isInAppBrowser()) {
   document.getElementById("browserNotice").style.display = "flex";
 }
+  function openGiftPreference() {
+  const overlay = document.getElementById("giftOverlay");
+
+  overlay.classList.add("show");
+
+  document.body.style.overflow = "hidden";
+
+  overlay.scrollTop = 0;
+}
+
+function closeGiftPreference() {
+  const overlay = document.getElementById("giftOverlay");
+
+  overlay.classList.remove("show");
+
+  document.body.style.overflow = "";
+}
 </script>
   <!-- redeploy -->
+  <div id="giftOverlay" class="gift-overlay">
+
+  <div class="gift-overlay-page">
+
+    <button class="gift-close" onclick="closeGiftPreference()">
+      ×
+    </button>
+
+    <div class="gift-top-decoration">❦</div>
+
+    <h1 class="gift-title">Gift Preference</h1>
+
+    <section class="gift-section">
+      <h2>Kitchen Essentials</h2>
+
+      <div class="gift-divider">
+        <span></span>❦<span></span>
+      </div>
+
+      <ul>
+        <li>Rice Cooker</li>
+        <li>Blender</li>
+        <li>Electric Grinder</li>
+        <li>Coffee Maker</li>
+        <li>High quality Steel Pan</li>
+        <li>Stainless Basin</li>
+        <li>Cooking Pot</li>
+        <li>Stainless steel deep fryer pot</li>
+        <li>Knife set</li>
+        <li>McCormick Spices &amp; Seasoning with container</li>
+      </ul>
+    </section>
+
+    <section class="gift-section">
+      <h2>Living Room Essentials</h2>
+
+      <div class="gift-divider">
+        <span></span>❦<span></span>
+      </div>
+
+      <ul>
+        <li>Air Purifier</li>
+        <li>Air Fresheners (kitchen, living room, bathroom)</li>
+        <li>Vacuum</li>
+        <li>Indoor slippers for couple</li>
+        <li>Bean bag</li>
+        <li>Black hanging wall shelf</li>
+        <li>Black Wall decor art painting photo (largest size)</li>
+        <li>Big artificial Plants</li>
+        <li>PMOP Self Wash Mop 2 in 1</li>
+      </ul>
+    </section>
+
+    <section class="gift-section">
+      <h2>Bedroom Essentials</h2>
+
+      <div class="gift-divider">
+        <span></span>❦<span></span>
+      </div>
+
+      <ul>
+        <li>Duvet Set</li>
+        <li>Foldable storage organizer</li>
+        <li>Queen Size bedsheet and pillowcase</li>
+        <li>Marshmallow Microfiber Blanket</li>
+        <li>Wall Mounted Make Up mirror</li>
+        <li>Couple sleepwear</li>
+      </ul>
+    </section>
+
+    <section class="gift-section">
+      <h2>Bathroom Essentials</h2>
+
+      <div class="gift-divider">
+        <span></span>❦<span></span>
+      </div>
+
+      <ul>
+        <li>Plush Cotton Bath Absorbent Towel</li>
+        <li>Black rug non slip</li>
+        <li>Large Capacity Plastic Laundry Basket with cover</li>
+        <li>PC Personal Collection Sof &amp; Mmmm Eternity Concentrated Fabric Conditioner (Purple)</li>
+      </ul>
+    </section>
+
+    <div class="gift-note">
+      <strong>Note:</strong>
+      While these are our gift preferences, your presence at our celebration
+      is truly the greatest gift. Please know that gifts are entirely optional;
+      having you share this special moment with us is more than enough.
+    </div>
+
+    <button class="gift-back-btn" onclick="closeGiftPreference()">
+      ← Back to Invitation
+    </button>
+
+  </div>
+
+</div>
 </body>
 </html>
