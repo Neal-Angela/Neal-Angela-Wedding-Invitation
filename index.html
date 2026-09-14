@@ -310,7 +310,7 @@
     <h2>Wedding Details</h2>
     <div class="details">
       <div class="detail"><strong>Date</strong><span>November 30, 2026</span></div>
-      <div class="detail"><strong>Ceremony</strong><span>Hall of Justice of Antipolo @ 12:00 PM</span></div>
+      <div class="detail"><strong>Ceremony</strong><span>New Antipolo City Hall of Justice @ 12:00 PM</span></div>
       <div class="detail"><strong>Reception</strong><span>Tobi's Escape @ 03:00 PM</span></div>
     </div>
   </section>
@@ -318,7 +318,7 @@
   <section>
    
     <h2>Our Next Chapter Begins</h2>
-    <img src="wedding photo.jpg" alt="Portrait Photo" width="=300" height="300">
+    <img src="wedding photo.jpg" alt="Portrait Photo" width="=400" height="400">
 <br></br>
     <p class="intro">
 
@@ -326,8 +326,8 @@
   </section>
 
   <section>
-    <div class="kicker">Come celebrate with us</div>
-    <h2>Venue &amp; RSVP</h2>
+    <h2>Come celebrate with us</h2>
+    <br>
     <div class="details">
       <div class="detail"><strong>A Note About Our Ceremony</strong><span>To keep our civil ceremony intimate, only our Principal Sponsors and immediate family will be accompanying us to the Hall of Justice. We truly appreciate your understanding and look forward to celebrating this special day with you.</span></div>
       <div class="detail"><strong>Reception</strong><span>All other cherished family and friends are kindly requested to proceed directly to the reception for drinks, food, and celebration.
@@ -340,7 +340,7 @@
 </div>
        <div class="buttons" style="transform:translateX(2.5px);">
   <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://www.google.com/maps/dir//GF,+J6JG%2BMF+New+Antipolo+City+Hall+of+Justice,+Hall+of+Justitice,+Sitio+Cabading,+Inarawan,+Antipolo,+1870+Rizal/@14.6316675,121.2236022,17z/data=!4m17!1m7!3m6!1s0x3397bf0061c0bd21:0xbc6179c989ed7e20!2sNew+Antipolo+City+Hall+of+Justice!8m2!3d14.6316623!4d121.2261771!16s%2Fg%2F11ld38hl41!4m8!1m0!1m5!1m1!1s0x3397bf0061c0bd21:0xbc6179c989ed7e20!2m2!1d121.2263765!2d14.631465!3e9?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D">Ceremony Direction</a>
-  <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://docs.google.com/forms/d/e/1FAIpQLSfjbKlk77U2xhnrS7xcGyN4jyXOHjq4jD1nm99upzg0zNeEpQ/viewform?usp=header" target="_blank">Gift Preference</a>
+  <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="gift.html" target="_blank"> Gift Preference </a>
   <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://www.google.com/maps/dir//Tobi's+Escape,+Ponderosa+Heights+Subdivision,+Lot+1+Block+5,+Bonanza+Bend,+cor+Curve+St,+Antipolo,+1870+Rizal/@14.6316675,121.2236022,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c7fcdf8e9865:0xd202a265c468d3b4!2m2!1d121.1642773!2d14.5746317!3e0?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D">Reception Direction</a>
 
 </div>
@@ -433,6 +433,14 @@ Due to our limited venue capacity, we kindly ask that you attend as the named gu
       console.log("Music could not play:", e);
     }
   });
+// Skip the envelope when returning from Gift Preference
+const params = new URLSearchParams(window.location.search);
+
+if (params.get("open") === "true") {
+  cover.style.display = "none";
+  site.classList.add("show");
+  window.scrollTo(0, 0);
+}
 </script>
   <!-- redeploy -->
 </body>
