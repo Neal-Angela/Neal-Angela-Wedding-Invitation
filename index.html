@@ -265,9 +265,90 @@
     .countdown{grid-template-columns:repeat(2,1fr)}
     section{padding:62px 22px}.photo{height:290px}
   }
+  .browser-notice {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  background: rgba(40, 30, 24, 0.65);
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+}
+
+.browser-box {
+  position: relative;
+
+  width: 100%;
+  max-width: 420px;
+
+  background: #fffaf1;
+  color: #49382d;
+
+  border: 1px solid #a7793b;
+  border-radius: 22px;
+
+  padding: 35px 25px 28px;
+
+  text-align: center;
+
+  box-shadow: 0 18px 45px rgba(66, 45, 27, 0.28);
+
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.browser-box h2 {
+  margin: 0 0 18px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.browser-box p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.browser-small {
+  font-size: 14px !important;
+}
+
+.browser-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+
+  border: none;
+  background: transparent;
+
+  color: #70533c;
+
+  font-size: 30px;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
+  <div id="browserNotice" class="browser-notice">
+  <div class="browser-box">
+    <button class="browser-close" onclick="closeBrowserNotice()">×</button>
+
+    <h2>Open in Your Browser</h2>
+
+    <p>
+      For the best invitation experience, please open this page in your external browser.
+    </p>
+
+    <p class="browser-small">
+      Tap the <strong>⋮</strong> or <strong>•••</strong> menu, then choose
+      <strong>Open in browser</strong>, <strong>Open in Chrome</strong>,
+      or <strong>Open in Safari</strong>.
+    </p>
+  </div>
+</div>
 <button class="music" id="musicBtn" aria-label="Music">♫</button>
 
 <div class="screen" id="cover">
@@ -440,6 +521,25 @@ if (params.get("open") === "true") {
   cover.style.display = "none";
   site.classList.add("show");
   window.scrollTo(0, 0);
+}
+  // Detect Facebook, Messenger, and Instagram in-app browsers
+function isInAppBrowser() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+  return (
+    ua.includes("FBAN") ||
+    ua.includes("FBAV") ||
+    ua.includes("Instagram") ||
+    ua.includes("Messenger")
+  );
+}
+
+function closeBrowserNotice() {
+  document.getElementById("browserNotice").style.display = "none";
+}
+
+if (isInAppBrowser()) {
+  document.getElementById("browserNotice").style.display = "flex";
 }
 </script>
   <!-- redeploy -->
