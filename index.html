@@ -935,6 +935,28 @@ Due to our limited venue capacity, we kindly ask that you attend as the named gu
       console.log("Music could not play:", e);
     }
   });
+    // Pause music when leaving the tab
+let pausedBecauseHidden = false;
+
+document.addEventListener("visibilitychange", async () => {
+  if (document.hidden) {
+    if (!audio.paused) {
+      audio.pause();
+      pausedBecauseHidden = true;
+    }
+  } else {
+    if (pausedBecauseHidden) {
+      try {
+        await audio.play();
+        playing = true;
+        musicBtn.textContent = "Ⅱ";
+      } catch (e) {
+        console.log("Music could not resume:", e);
+      }
+      pausedBecauseHidden = false;
+    }
+  }
+});
 // Skip the envelope when returning from Gift Preference
 const params = new URLSearchParams(window.location.search);
 
