@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Our Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#f3e1c1;
@@ -13,12 +15,14 @@
     --rose:#caa99a;
     --shadow:0 18px 45px rgba(66,45,27,.18);
   }
+
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     margin:0;background:#191512;color:var(--ink);
     font-family:Georgia,"Times New Roman",serif;
   }
+
   body::before{
   content:"";
   position:fixed;
@@ -52,9 +56,9 @@
     box-shadow:0 28px 80px rgba(0,0,0,.4);position:relative;overflow:hidden;
   }
   .hero{min-height:100svh;padding:54px 28px 42px;display:flex;flex-direction:column;align-items:center;text-align:center}
-  .eyebrow{letter-spacing:.28em;font-size:12px;margin-top:16px}
-  h1{font-size:21px;font-weight:400;letter-spacing:.18em;margin:36px 0 12px}
-  .names{font-family:"Brush Script MT","Segoe Script",cursive;font-size:57px;line-height:.95;color:#5b4638}
+  .eyebrow {font-family: "Cormorant Garamond", Georgia, serif; font-size: 25px; font-weight: 600; letter-spacing: .18em; color: #6b5140; margin-top: 16px;}
+  h1{font-size:15px;font-weight:400;letter-spacing:.18em;margin:36px 0 12px}
+  .names{font-family:"Brush Script MT","Segoe Script",cursive;font-size:57px;line-height:.95;color:#5b4638;  margin-top: 35px;}
   .date{font-size:20px;letter-spacing:.15em;margin:18px 0 28px}
   .envelope-wrap{
     width:330px;
@@ -105,6 +109,23 @@
     filter:drop-shadow(0 3px 2px rgba(109,80,48,.14));
     transform-origin:top;transition:transform .8s cubic-bezier(.2,.8,.2,1);
   }
+    .flap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(27deg,
+            transparent 49.7%,
+            rgba(120,90,55,.45) 50%,
+            transparent 50.3%)
+            left bottom / 50% 100% no-repeat,
+
+        linear-gradient(-27deg,
+            transparent 49.7%,
+            rgba(120,90,55,.45) 50%,
+            transparent 50.3%)
+            right bottom / 50% 100% no-repeat;
+}
 
   /* Metallic gold wax seal */
   .seal{
@@ -332,26 +353,32 @@
   /* ===== GIFT PREFERENCE OVERLAY ===== */
 
 .gift-overlay {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  overflow-y:auto;
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 9999;
 
-  background:
-    linear-gradient(
-      rgba(255,250,241,0.78),
-      rgba(255,250,241,0.78)
-    ),
-    url("background invitation 1.jpeg");
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
 
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
+    background:
+      linear-gradient(
+        rgba(255,250,241,0.78),
+        rgba(255,250,241,0.78)
+      ),
+      url("background invitation 1.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .gift-overlay.show {
-  display:block;
+    display: block;
 }
 
 .gift-overlay-page {
@@ -527,7 +554,152 @@
     right:12px;
   }
 }
+
+
+/* ===== ORIGINAL ENVELOPE + CINEMATIC GSAP OPENING ===== */
+#cover .envelope { transform-style:preserve-3d; }
+#cover .flap { backface-visibility:hidden; transform-origin:50% 0%; }
+#cover .invite-preview {
+  position:absolute;
+  left:18px; right:18px; top:18px;
+  height:170px;
+  z-index:1;
+  border-radius:10px 10px 6px 6px;
+  background:linear-gradient(180deg,#fffdf8 0%,#fff7e9 100%);
+  border:1px solid rgba(167,121,59,.20);
+  box-shadow:0 12px 28px rgba(66,45,27,.18);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#5b4638;
+  opacity:0;
+  transform:translateY(80px) scale(.96);
+  pointer-events:none;
+}
+#cover .preview-big-invited {
+    font-family: "Great Vibes", cursive;
+    font-size: 44px;
+    font-weight: 400;
+    color: #6b4c38;
+    text-align: center;
+    line-height: 1.2;
+}
+#cover.opening .envelope { cursor:default; }
+/* ===== FINAL MOBILE GIFT FIX ===== */
+
+.gift-overlay {
+    width: 100vw !important;
+    height: 100dvh !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+}
+
+.gift-overlay-page {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100dvh !important;
+    margin: 0 !important;
+
+    padding:
+        max(40px, env(safe-area-inset-top))
+        max(18px, env(safe-area-inset-right))
+        max(40px, env(safe-area-inset-bottom))
+        max(18px, env(safe-area-inset-left)) !important;
+
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.gift-title {
+    font-size: clamp(38px, 12vw, 60px) !important;
+    width: 100% !important;
+}
+
+.gift-section {
+    width: 100% !important;
+}
+
+.gift-section h2 {
+    font-size: clamp(18px, 5.5vw, 26px) !important;
+    overflow-wrap: break-word;
+}
+
+.gift-section ul {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 24px !important;
+    padding-right: 5px !important;
+    font-size: clamp(15px, 4.2vw, 18px) !important;
+    box-sizing: border-box !important;
+}
+
+.gift-divider span {
+    width: min(65px, 18vw) !important;
+}
+
+.gift-note {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px 16px !important;
+    font-size: clamp(14px, 4vw, 17px) !important;
+    box-sizing: border-box !important;
+}
+
+.gift-back-btn {
+    max-width: 90% !important;
+}
+  /* FIX GIFT PREFERENCE FOR IPHONE + ANDROID */
+@media screen and (max-width: 600px) {
+
+  .gift-overlay,
+  .gift-overlay-page,
+  .gift-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .gift-overlay-page {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .gift-title {
+    font-size: 45px !important;
+    width: 100% !important;
+    white-space: normal !important;
+  }
+
+  .gift-section h2 {
+    font-size: 20px !important;
+  }
+
+  .gift-section ul {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 28px !important;
+    padding-right: 5px !important;
+    box-sizing: border-box !important;
+  }
+
+  .gift-section li {
+    overflow-wrap: break-word !important;
+  }
+
+  .gift-note {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 20px 15px !important;
+  }
+}
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+
 </head>
 <body>
   <div id="browserNotice" class="browser-notice">
@@ -553,16 +725,28 @@
   <div class="grain"></div>
   <div class="invite-card">
     <div class="hero">
-      <div class="eyebrow">A celebration of love</div>
-      <h1>YOU'RE INVITED</h1>
+      <div class="eyebrow">SAVE THE DATE!!</div>
       <div class="names">Neal & Angela</div>
       <div class="date">11 · 30 · 2026</div>
 
-      <div class="envelope-wrap">
-        <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open invitation">
-          <div class="flap"></div>
-          <div class="seal" id="waxSeal" role="button" tabindex="0" aria-label="Open invitation and play music">A&amp;N</div>
+ <div class="envelope-wrap">
+
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Open invitation">
+
+        <div class="invite-preview" id="invitePreview" aria-hidden="true">
+            <div class="preview-big-invited">You're Invited</div>
         </div>
+
+        <div class="flap"></div>
+
+        <div class="seal" id="waxSeal" role="button" tabindex="0"
+             aria-label="Open invitation and play music">
+            A&amp;N
+        </div>
+
+    </div>
+
+</div>
       </div>
 
     </div>
@@ -590,7 +774,7 @@
     <div class="details">
       <div class="detail"><strong>Date</strong><span>November 30, 2026</span></div>
       <div class="detail"><strong>Ceremony</strong><span>New Antipolo City Hall of Justice @ 12:00 PM</span></div>
-      <div class="detail"><strong>Reception</strong><span>Tobi's Escape @ 03:00 PM</span></div>
+      <div class="detail"><strong>Reception</strong><span>Tamara Private Resort <br> @ 04:00 PM</span></div>
     </div>
   </section>
 
@@ -611,8 +795,28 @@
       <div class="detail"><strong>A Note About Our Ceremony</strong><span>To keep our civil ceremony intimate, only our Principal Sponsors and immediate family will be accompanying us to the Hall of Justice. We truly appreciate your understanding and look forward to celebrating this special day with you.</span></div>
       <div class="detail"><strong>Reception</strong><span>All other cherished family and friends are kindly requested to proceed directly to the reception for drinks, food, and celebration.
 </span></div>
-      <div class="detail"><strong>Dress Code</strong><span>We would love for our family and friends to blend beautifully with our day. Please join us in wearing warm neutrals, cream, or natural beige.
-</span></div>
+<div class="detail">
+  <strong>Dress Code</strong>
+
+  <span>
+    We would love for our family and friends to blend beautifully with our day.
+    Please join us in wearing warm neutrals, cream, or natural beige.
+  </span>
+
+  <div style="
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:18px;
+  ">
+    <i style="width:30px;height:30px;border-radius:50%;background:#F5E6CC;border:1px solid #c9b99f;"></i>
+    <i style="width:30px;height:30px;border-radius:50%;background:#E2C9A5;"></i>
+    <i style="width:30px;height:30px;border-radius:50%;background:#C8A47E;"></i>
+    <i style="width:30px;height:30px;border-radius:50%;background:#A98263;"></i>
+    <i style="width:30px;height:30px;border-radius:50%;background:#80634F;"></i>
+  </div>
+</div>
     </div>
     <div class="buttons">
   <a class="btn" style="padding:10px 30px; font-size:11px;" href="https://docs.google.com/forms/d/e/1FAIpQLSfjbKlk77U2xhnrS7xcGyN4jyXOHjq4jD1nm99upzg0zNeEpQ/viewform?usp=header" target="_blank" rel="noopener noreferrer">Confirm Attendance</a>
@@ -620,7 +824,7 @@
        <div class="buttons" style="transform:translateX(2.5px);">
   <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://www.google.com/maps/dir//GF,+J6JG%2BMF+New+Antipolo+City+Hall+of+Justice,+Hall+of+Justitice,+Sitio+Cabading,+Inarawan,+Antipolo,+1870+Rizal/@14.6316675,121.2236022,17z/data=!4m17!1m7!3m6!1s0x3397bf0061c0bd21:0xbc6179c989ed7e20!2sNew+Antipolo+City+Hall+of+Justice!8m2!3d14.6316623!4d121.2261771!16s%2Fg%2F11ld38hl41!4m8!1m0!1m5!1m1!1s0x3397bf0061c0bd21:0xbc6179c989ed7e20!2m2!1d121.2263765!2d14.631465!3e9?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D"target="_blank" rel="noopener noreferrer">Ceremony Direction</a>
   <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="#"  onclick="openGiftPreference(); return false;">Gift Preference</a>
-  <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://www.google.com/maps/dir//Tobi's+Escape,+Ponderosa+Heights+Subdivision,+Lot+1+Block+5,+Bonanza+Bend,+cor+Curve+St,+Antipolo,+1870+Rizal/@14.6316675,121.2236022,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x3397c7fcdf8e9865:0xd202a265c468d3b4!2m2!1d121.1642773!2d14.5746317!3e0?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Reception Direction</a>
+  <a class="btn" style="padding:10px 9px; font-size:8px; letter-spacing:.06em;" href="https://www.google.com/maps/dir//TAMARA+PRIVATE+RESORT,+Montivideo+Subdivision,+Binangonan,+Rizal/@14.6316675,121.2236022,17z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x3397c3df798e9d87:0xa39cd0e2a39397d4!2m2!1d121.2185787!2d14.480449!3e9?entry=ttu&g_ep=EgoyMDI2MDkxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Reception Direction</a>
 
 </div>
   </section>
@@ -658,12 +862,31 @@ Due to our limited venue capacity, we kindly ask that you attend as the named gu
   let playing = false;
 
   function openInvitation(){
-    envelope.classList.add("open");
-    setTimeout(()=>{
-      cover.style.display="none";
-      site.classList.add("show");
-      window.scrollTo({top:0,behavior:"instant"});
-    },650);
+    if (cover.classList.contains("opening")) return;
+    cover.classList.add("opening");
+
+    const flap = envelope.querySelector(".flap");
+    const seal = document.getElementById("waxSeal");
+    const preview = document.getElementById("invitePreview");
+
+    const tl = gsap.timeline({
+      defaults:{ease:"power3.inOut"},
+      onComplete:()=>{
+        cover.style.display="none";
+        site.classList.add("show");
+        window.scrollTo({top:0,behavior:"instant"});
+      }
+    });
+
+    /* Keep your original beige envelope, but use the newer cinematic motion. */
+    tl.to(seal,{scale:.72,opacity:0,rotation:-10,duration:.28})
+      .to(envelope,{rotation:0,y:8,duration:.35},"<")
+      .to(flap,{rotationX:-178,duration:.9,ease:"power2.inOut"},"-=.03")
+      .set(flap,{zIndex:0})
+      .set(envelope,{overflow:"visible"})
+      .to(preview,{opacity:1,y:-150,scale:1,duration:1.05,ease:"power3.out"},"-=.28")
+      .to(preview,{y:-175,scale:1.05,duration:.45,ease:"power2.inOut"},"+=.10")
+      .to(cover,{opacity:0,duration:.55,ease:"power2.in"},"-=.18");
   }
   async function openFromSeal(){
     try{
@@ -751,11 +974,10 @@ if (isInAppBrowser()) {
 
 function closeGiftPreference() {
   const overlay = document.getElementById("giftOverlay");
-
   overlay.classList.remove("show");
-
   document.body.style.overflow = "";
 }
+
 </script>
   <!-- redeploy -->
   <div id="giftOverlay" class="gift-overlay">
